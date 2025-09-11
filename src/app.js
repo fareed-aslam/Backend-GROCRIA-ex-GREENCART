@@ -5,7 +5,10 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 export const app = express();
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://frontend-grocria.vercel.app/",
+];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
