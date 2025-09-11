@@ -1,30 +1,30 @@
 import express from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-// import { configureCors } from "./config/corsConfig.js";
-import cors from "cors";
+import { configureCors } from "./config/corsConfig.js";
+// import cors from "cors";
 export const app = express();
 
-const allowedOrigins = ["https://frontend-grocria.vercel.app/"];
+// const allowedOrigins = ["https://frontend-grocria.vercel.app/"];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.static("public"));
-// app.use(configureCors());
+app.use(configureCors());
 // app.use(cors({ origin: allowedOrigins, credentials: true }));
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(null, false); // instead of Error, false return
-      }
-    },
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//         callback(null, true);
+//       } else {
+//         callback(null, false); // instead of Error, false return
+//       }
+//     },
+//     credentials: true,
+//   })
+// );
 
 app.use(cookieParser());
 app.use(morgan("dev"));
