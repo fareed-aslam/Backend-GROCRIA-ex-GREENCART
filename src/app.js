@@ -24,9 +24,9 @@ import addressRouter from "./routes/address.route.js";
 import orderRouter from "./routes/order.route.js";
 import { stripeWebhook } from "./controllers/order.controller.js";
 
-// app.use("/", (req, res) => {
-//   res.send("fareed");
-// });
+app.use("/", (req, res) => {
+  res.send("fareed");
+});
 
 app.use("/api/user", userRouter);
 app.use("/api/seller", sellerRouter);

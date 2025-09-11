@@ -18,10 +18,12 @@ await connectCloudinary();
 //     console.log("connection failed...", error);
 //   });
 
-app.use((req, res) => {
-  if (!isConnected) {
-    connectDb();
-  }
-});
+// app.use((req, res) => {
+//   if (!isConnected) {
+//     connectDb();
+//   }
+// });
+
+await connectDb(); // sirf cold start pe connect karega
 
 export default app;
