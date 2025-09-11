@@ -6,7 +6,7 @@ export const configureCors = () => {
     origin: (origin, callback) => {
       const allowedOrigins = [
         "http://localhost:5173",
-        "https://frontend-grocria.vercel.app/",
+        "https://frontend-grocria.vercel.app",
       ];
 
       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
