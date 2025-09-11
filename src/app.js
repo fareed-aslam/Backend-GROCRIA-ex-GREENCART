@@ -5,10 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 export const app = express();
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://frontend-grocria.vercel.app/",
-];
+const allowedOrigins = ["https://frontend-grocria.vercel.app/"];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
@@ -19,12 +16,10 @@ app.use(express.static("public"));
 app.use(
   cors({
     origin: function (origin, callback) {
-      // origin == undefined matlab Postman / server-side request
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) !== -1) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
-        callback(new Error("CORS not allowed"));
+        callback(null, false); // instead of Error, false return
       }
     },
     credentials: true,
